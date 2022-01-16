@@ -262,7 +262,7 @@
             if (program.jit) {
                 exec("luajit -b " + tmpFilename + " " + outputname, execCallback);
             } else { // Lua 5.2 bytecode
-                exec("luac5.2 -o " + outputname + " " + tmpFilename, execCallback);
+                exec("luac -o " + outputname + " " + tmpFilename, execCallback);
             }
         } else { // Output to text
             fs.writeFileSync(outputname, transpiledCode, "utf8");
@@ -279,7 +279,7 @@
             if (program.verbose) {
                 console.log("-- Execution output (Lua 5.2):");
             }
-            exec("lua5.2 " + tmpFilename, execCallback);
+            exec("lua " + tmpFilename, execCallback);
         }
     }
 
